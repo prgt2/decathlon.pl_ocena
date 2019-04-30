@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-latest.pack.js"></script>
+    <script src="./script.js"></script>
+    <title>Ocena strony decathlon.pl</title>
+</head>
+<body onload="script()">
+    <a href="#" class="float"><img src="./home.png" alt=""></a>
+    <div class="container header2">
+        <div class="hamburger" id="hamburger">
+            <a href="#" class="hamburger-icon"><img src="./hamburger.png" alt=""></a>
+        </div>
+    </div>
+    <nav class="">
+        <button class="perf">WYDAJNOŚĆ</button>
+        <button class="graph">GRAFIKI</button>
+        <button class="resp">RESPONSYWNOŚĆ</button>
+        <button class="form">FORMATOWANIE TEKSTU</button>
+        <button class="bug">BŁĘDY</button>
+    </nav>
+    <div class="container header">
+        <a href="" class="perf">WYDAJNOŚĆ</a>
+        <a href="" class="graph">GRAFIKI</a>
+        <a href="" class="resp">RESPONSYWNOŚĆ</a>
+        <a href="" class="form">FORMATOWANIE TEKSTU</a>
+        <a href="" class="bug">BŁĘDY</a>
+    </div>
+    <div class="menu"></div>
+    <div class="container performance">
+        <div class="container-performance-header">
+            <h3>Wydajność</h3>
+        </div>
+        <div class="container-performance1">
+            <p>Strona główna sklepu ładuje się aż 12,89&nbsp;s przy połączniu stacjonarnym o prędkości 50&nbsp;Mb/s. Taki wynik może skutecznie zniechęcić nawet najbardziej cierpliwych użytkowników. Z&nbsp;badań Google wynika, że wydłużenie czasu ładowania z 0,4&nbsp;s do 0,9&nbsp;s może doprowadzić do dwudziestoprocentowego spadku ruchu i zysków ze sprzedaży. Specjaliści z Amazona wykazali, że każde dodatkowe 100&nbsp;ms skutkuje spadkiem sprzedaży o 1%. W&nbsp;wypadku sklepu internetowego jak decathlon.pl, takie parametry są szczególnie ważne. Kiedy testowałem stronę na starszym urządzeniu, przeglądarka wyświetliła ostrzeżenie, że strona spowalnia działanie przeglądarki. Niektórych klientów taki komunikat może nawet przestraszyć.</p>
+        </div>
+        <div class="container-performance2">
+            <p> Proponuję po pierwsze odchudzić skrypty na stronie. Należy przeanalizować, czy wszystkie funkcjonalności są nadal używane, i usunąć te już niepotrzebne. Warto też przeszukać kod pod kątem:
+                <ul>
+                    <li>niepotrzebnych zmiennych o zasięgu globalnym, deklarowanych słowem kluczowym var,</li>
+                    <li>odwołań jQuery typu children(), find() i siblings() oraz </li>
+                    <li>pętli, które spowalniają działanie programu. </li>
+                </ul></p>
+        </div>
+        <div class="container-performance3">
+            <p>Ponadto podczas ładowania strona wysyła aż 137 żądań, z których dwa są zwracane z kodem 404; warto upewnić się, czy wszystkie żądania są potrzebne, oraz przeanalizować wydajnośc ich przetwarzania po stronie serwera.</p>
+        </div>
+    </div>
+    <div class="container graphics">
+        <div class="container-graphics-header">
+            <h3>Grafiki</h3>
+        </div>
+        <div class="container-graphics1">
+            <p>W wersji mobilnej wysyłane grafiki są zbyt małego rozmiaru i wyraźnie rozpikselowane – np. ikona CLICK&COLLECT w jednym z niebieskich menu poziomych. W tym wypadku problem rozwiąże zastosowanie grafiki wektorowej zamiast rastrowej. Ponadto nie wszystkie zdjęcia docierają z serwera do klienta – np. zamiast zdjęcia czapki „inesis” przeglądarka wyświetla ikonkę grafiki i opis dla osób niewidzących.
+            </p>
+        </div>
+    </div>
+    <div class="container rwd">
+        <div class="container-rwd-header">
+            <h3>Responsywność</h3>
+        </div>
+        <div class="container-rwd1">
+            <p>Na polu responsywności można bardzo wiele usprawnić. Po pierwsze, wersja na telefony nie dopasowuje się do szerokości viewportu – treść zostaje nieznacznie ucięta z prawej strony, co wymusza przewijanie w poziomie. Niebieskie menu, dzielące treść w kilku miejscach, są widoczne tylko w 2/5 swojej szerokości. Można skomponować ich zawartość tak, aby zmieścić ją całą w szerokości strony. Innym rozwiązaniem jest dodanie paska, sugerującego klientowi istnienie niewidocznej treści. Bez tego trudno się domyślić, że menu jest przewijalne, i jego zawartość może nie dotrzeć do użytkownika.</p>
+        </div>
+        <div class="container-rwd2">
+            <p>Strona próbuje implementować zasady RWD, ale tylko dla niektórych elementów. Pierwsze menu poziome od góry skaluje się wraz ze zmniejszaniem szerokości okna, ale tylko do 820&nbsp;px. Poniżej tego breakpointu menu jest ucinane. To samo dzieje się z drugim menu od góry, po przekroczeniu breakpointu 570&nbsp;px. Kafelki z kontenera „Więcej dla ciebie” zmieniają swoje położenie, dopasowując się do szerokości viewportu, ale większość treści strony nie jest responsywna, przez co dodatkowo pojawia się brzydki efekt asymetryczności. Ta sama niekonsekwencja jest widoczna też podczas wyświetlania strony na telewizorze – oba górne menu absurdalnie się rozciągają, ale szerokość treści poniżej wynosi 1000&nbsp;px, a więc zdecydownie za mało.</p>
+        </div>
+        <div class="container-rwd3">
+            <p>Jako rozwiązanie proponuję zastosowanie modelu RWD w koncepcji layout shifter. Dla kilku typowych rozmiarów należy przygotować osobne kompozycje, uwzględniające funkcjonalność, czytelność i estetykę. Stosując taki sam układ i rozmiar elementów dla wyświetlacza telewizora czy zminimalizowanego okna przeglądarki na komputerze nie da się uzyskać optymalnego rozmieszczenia treści. Strona wyświetlana na telefonie powinna mieć mniej funkcjonalności, niż wersja na tablety, które ponadto powinny być inaczej rozmieszczone.</p>
+        </div>
+    </div>  
+    <div class="container formatting">
+        <div class="container-formatting-header">
+            <h3>Formatowanie tekstu</h3>
+        </div>
+        <div class="container-formatting1">
+            <p>Czcionki są używane niekonsekwentnie – w większości wypadków zastosowano krój Roboto, ale np. na stronie zakładania konta wyświetla się domyślna rodzina sans-serif, wyraźnie odstająca od reszty dokumentu. Prawdopodobnie zastosowano tu grubość czcionki, która nie została załadowana z zewnętrznego źródła (np. Google Fonts), dlatego przeglądarka nie jest w stanie jej wyświetlić. W tym miejscu tekst jest też niepoprawnie zformatowany – punktory (rolę tę pełni tu myślnik) i tekst listy powinny znajdować się w osobnych kolumnach, tymczasem w obrębie danego punktu listy drugi wiersz zaczyna się równo z punktorem. Wynika to z wpisywania myślników do tekstu, ujętego potem w tagi &lt;li&gt;. Zamiast tego, pomiędzy tagami &lt;li&gt; powinien znajdować się sam tekst, a tagowi &lt;ul&gt; należałoby nadać odpowiednią właściwośc stylu list-style-type lub list-style-image, albo użyć składni ul&nbsp;&nbsp;>&nbsp;&nbsp;li:before&nbsp;&nbsp;{content:&nbsp;&nbsp;‘-’;}.</p>
+            <p>Dla lepszej estetyki i czytelności warto zastosować też justowanie tekstu, którego brakuje na przykład na stronie „O&nbsp;firmie”.</p>
+        </div>
+    </div>
+    <div class="container bugs">
+        <div class="container-bugs-header">
+            <h3>Błędy</h3>
+        </div>
+        <div class="container-bugs1">
+            <p>Odnośnik „Dla prasy” przekierowuje do nieistniejącego zasobu, a rozwijalne menu na stronie „Potrzebujesz pomocy?” w wersji mobilnej jest źle położone (brak odstępu pomiędzy menu a umieszczoną nad nim grafiką sprawia wrażenie nachodzenia na siebie elementów) i ucięte (widać tylko wierzchołki niektórych liter).</p>
+        </div>
+    </div>
+    <div class="container footer">
+
+    </div>
+</body>
+</html>
